@@ -12,6 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 /**
  * Created by danielmalone on 7/29/17.
@@ -73,15 +76,19 @@ public class MainActivity extends FragmentActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             super.onCreateView(inflater, container, savedInstanceState);
             View view = inflater.inflate(R.layout.fragment_pager_list, container, false);
-//            TextView name = (TextView) view.findViewById(R.id.name);
-//            name.setText("Here! " + mNum);
+            TextView name = (TextView) view.findViewById(R.id.text);
+            name.setText("Here! " + mNum);
             return view;
         }
 
         @Override
         public void onActivityCreated(@Nullable Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
-            setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1));
+            ArrayList<String> asdf = new ArrayList<>();
+            for (int i = 0; i < 30; i++) {
+                asdf.add("Daniel Malone # " + i);
+            }
+            setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, asdf));
         }
     }
 }
